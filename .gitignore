@@ -1,0 +1,9 @@
+# Never commit secrets or host-specific settings (this repo is public).
+.env
+*.env
+!.env.example
+# Local artifacts / captures.
+*.log
+*.png
+*.iso
+serial*.txt
