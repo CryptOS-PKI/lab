@@ -1,20 +1,29 @@
 # lab
 
-Reusable tooling for booting CryptOS on VMware ESXi via `govc`: build and upload an
-ISO, create a UEFI VM (Secure Boot off, optional vTPM), boot it, and capture the
-serial console and screenshots for validation and debugging.
+Tooling for testing CryptOS on real and virtual hardware. Organized by target
+environment, so new environments (bare metal, other hypervisors) can be added
+alongside without disturbing the others.
 
-## Prerequisites
+## Environments
 
-- `govc` (VMware CLI): `go install github.com/vmware/govmomi/govc@latest`
-- Reachable ESXi/vCenter and a built CryptOS ISO.
+- **`esxi/`** — boot CryptOS on VMware ESXi via `govc`: upload an ISO, create a
+  UEFI VM (Secure Boot off, optional vTPM), boot it, and capture the serial
+  console and screenshots.
+- _(planned)_ **bare metal** — PXE/IPMI-driven install-and-boot on physical hosts.
 
 ## Setup
 
-Copy `.env.example` to `.env`, fill in your host and lab settings, then `source .env`.
-`.env` is gitignored and must never be committed — this repo is public.
+Copy `.env.example` to `.env`, fill in your host and target settings, then
+`source .env`. `.env` is gitignored and must never be committed — this repo is
+public.
 
-## Scripts
+## ESXi quick start
 
-Added as the flow is validated (see `scripts/`): upload an ISO to a datastore,
-create the lab VM, power/boot it, and pull its serial log + a console screenshot.
+```
+source .env
+esxi/upload-iso.sh build/out/cryptos-amd64-vmware.iso
+esxi/create-vm.sh
+esxi/boot.sh 80          # power on, capture serial + screenshot
+esxi/serial.sh           # re-read the serial log
+esxi/destroy-vm.sh       # tear down
+```
