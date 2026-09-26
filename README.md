@@ -1,23 +1,23 @@
-# lab
+# lab 🧪
 
-Tooling for testing CryptOS on real and virtual hardware. Organized by target
-environment, so new environments (bare metal, other hypervisors) can be added
-alongside without disturbing the others.
+> 🔬 Tooling for testing CryptOS on real and virtual hardware. Organized by target
+> environment, so new environments (bare metal, other hypervisors) can be added
+> alongside without disturbing the others.
 
-## Environments
+## 🌍 Environments
 
-- **`esxi/`** — boot CryptOS on VMware ESXi via `govc`: upload an ISO, create a
+- 🖥️ **`esxi/`** — boot CryptOS on VMware ESXi via `govc`: upload an ISO, create a
   UEFI VM (Secure Boot off, optional vTPM), boot it, and capture the serial
   console and screenshots.
-- _(planned)_ **bare metal** — PXE/IPMI-driven install-and-boot on physical hosts.
+- 🔩 **bare metal** _(planned)_ — PXE/IPMI-driven install-and-boot on physical hosts.
 
-## Setup
+## ⚙️ Setup
 
 Copy `.env.example` to `.env`, fill in your host and target settings, then
-`source .env`. `.env` is gitignored and must never be committed — this repo is
+`source .env`. ⚠️ `.env` is gitignored and must never be committed — this repo is
 public.
 
-## ESXi quick start
+## 🚀 ESXi quick start
 
 ```
 source .env
